@@ -46,6 +46,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val sydney = LatLng(-34.0, 151.0)
         map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+
+        //These coordinates represent the latitude and longitude of the Googleplex.
+        val latitude = 37.422160
+        val longitude = -122.084270
+        val zoomLevel = 15f
+
+        val homeLatLng = LatLng(latitude, longitude)
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(homeLatLng, zoomLevel))
+        map.addMarker(MarkerOptions().position(homeLatLng).title("Googleplex"))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
