@@ -49,10 +49,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         //These coordinates represent the latitude and longitude of the Googleplex.
         val latitude = 37.422160
         val longitude = -122.084270
-        val zoomLevel = 15f
+        val zoomLevel = 18f
 
         val homeLatLng = LatLng(latitude, longitude)
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(homeLatLng, zoomLevel))
+
+        val overlaySize = 100f
+        val androidOverlay = GroundOverlayOptions()
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.android))
+            .position(homeLatLng, overlaySize)
+        map.addGroundOverlay(androidOverlay)
+
         map.addMarker(MarkerOptions().position(homeLatLng).title("Googleplex"))
 
         setMapLongClick(map)
